@@ -1,24 +1,22 @@
 <SPAN ALIGN="CENTER">
 
-[![homebridge-vivint: Native HomeKit support for Vivint](https://raw.githubusercontent.com/balansse/homebridge-vivint/master/homebridge-vivint.svg)](https://github.com/balansse/homebridge-vivint)
+# Vivint MQTT Bridge
 
-# Homebridge Vivint
+## MQTT monitoring and control for Vivint system
 
-[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins) [![npm](https://badgen.net/npm/v/@balansse/homebridge-vivint) ![npm](https://badgen.net/npm/dt/@balansse/homebridge-vivint)](https://www.npmjs.com/package/@balansse/homebridge-vivint) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6NDY338ETGK4Q&currency_code=USD&source=url)
-
-## HomeKit support for Vivint system using [Homebridge](https://homebridge.io).
 </SPAN>
 
 ## Overview
 
-This is a fork of [homebridge-vivint](https://github.com/timcharper/homebridge-vivint) plugin for [homebridge](https://github.com/nfarina/homebridge).
+This is a fork of [homebridge-vivint](https://github.com/timcharper/homebridge-vivint).
 It allows to use your Vivint SmartHome products in Apple Homekit. The main changes in this fork include:
-  * More devices are supported
-  * Increased stability of notifications
-  * Support for camera streaming
-  * Ignore list for specific device types (useful in case of external integrations like Nest or MyQ that may be managed directly by another plugin) 
-  * Dynamic accessory cache management - any accessories that are no longer managed by the plugin or are disconnected from Vivint system would be removed from the cache automatically
-  * Homebridge Config UI X Web UI settings support
+
+- More devices are supported
+- Increased stability of notifications
+- Support for camera streaming
+- Ignore list for specific device types (useful in case of external integrations like Nest or MyQ that may be managed directly by another plugin)
+- Dynamic accessory cache management - any accessories that are no longer managed by the plugin or are disconnected from Vivint system would be removed from the cache automatically
+- Homebridge Config UI X Web UI settings support
 
 Homebridge-Vivint was initially written by a former Vivint employee, Tim Harper. This project is not officially endorsed, sponsored, or affiliated with Vivint SmartHome in any way.
 
@@ -36,7 +34,6 @@ npm install -g @balansse/homebridge-vivint
 
 Then, add the following configuration to the `platforms` array in your Homebridge `config.json`.
 
-
 ```
 {
     {
@@ -53,22 +50,22 @@ That's it! The plugin will automatically load all supported Vivint devices into 
 
 Currently, the following items are supported:
 
-* Locks
-* Contact sensors
-* Thermostat
-* Motion sensors
-* Garage Door Opener
-* Alarm Panel (arm home/away, disarm)
-* Cameras & Doorbells
-* Tilt sensors
-* Fire alert sensors
-* Glass break sensors
-* Smoke detectors
-* Carbon monoxide sensors
-* Heat / Freeze sensors
-* Z-Wave switches (binary and dimmer) that are paired with the Vivint panel. Be sure they are labeled "light" or "fan" if they control those respective devices.
+- Locks
+- Contact sensors
+- Thermostat
+- Motion sensors
+- Garage Door Opener
+- Alarm Panel (arm home/away, disarm)
+- Cameras & Doorbells
+- Tilt sensors
+- Fire alert sensors
+- Glass break sensors
+- Smoke detectors
+- Carbon monoxide sensors
+- Heat / Freeze sensors
+- Z-Wave switches (binary and dimmer) that are paired with the Vivint panel. Be sure they are labeled "light" or "fan" if they control those respective devices.
 
-As I do not have access to all varieties of hardware that is supported by Vivint, some incompatibilities might happen. If you notice any weird behavior or your Vivint device is not supported, please submit an issue with your homebridge.log file attached.
+As I do not have access to all varieties of hardware that is supported by Vivint, some incompatibilities might happen. If you notice any weird behavior or your Vivint device is not supported, please submit an issue.
 
 ## Configuration
 
@@ -87,10 +84,10 @@ A general recommendation: consider creating and using a new Vivint account named
 
 Configuration options overview:
 
-* **username**
-* **password**
-* **apiLoginRefreshSecs** - How often should Vivint Homebridge renew the session token? The token that Vivint provides when authenticating will expire. Also, when this renewal occurs, the plugin requests another snapshot. The event stream can sometimes fail to report device state appropriately and events can come out of order with the snapshot, or updates can be missed entirely. The occasional snapshot retrieval will auto-correct any such errors. Avoid setting this any more frequent that 10 minutes.
-* **motionDetectedOccupancySensorMins** - Homebridge-Vivint will create occupancy sensors for motion sensors that will stay active for X minutes after a motion event is detected. This value configures for how long that occupancy sensor will stay active if no further motion events are detected. Note: Vivint's reporting of motion events over the event stream can be a little inconsistent, at times. As a recommendation, don't plan on creating Homekit automations that respond to Vivint motion events.
-* **ignoreDeviceTypes** - The array containing the device types that should be ignored. Allowed types: "thermostat_device", "door_lock_device", "garage_door_device", "camera_device", "wireless_sensor"
-* **disableCameras** - If checked, camera video feeds would not appear in Homebridge.
-* **useExternalVideoStreams** - Stream camera feeds from Vivint servers instead of streaming directly from the Panel.
+- **username**
+- **password**
+- **apiLoginRefreshSecs** - How often should Vivint Homebridge renew the session token? The token that Vivint provides when authenticating will expire. Also, when this renewal occurs, the plugin requests another snapshot. The event stream can sometimes fail to report device state appropriately and events can come out of order with the snapshot, or updates can be missed entirely. The occasional snapshot retrieval will auto-correct any such errors. Avoid setting this any more frequent that 10 minutes.
+- **motionDetectedOccupancySensorMins** - Homebridge-Vivint will create occupancy sensors for motion sensors that will stay active for X minutes after a motion event is detected. This value configures for how long that occupancy sensor will stay active if no further motion events are detected. Note: Vivint's reporting of motion events over the event stream can be a little inconsistent, at times. As a recommendation, don't plan on creating Homekit automations that respond to Vivint motion events.
+- **ignoreDeviceTypes** - The array containing the device types that should be ignored. Allowed types: "thermostat_device", "door_lock_device", "garage_door_device", "camera_device", "wireless_sensor"
+- **disableCameras** - If checked, camera video feeds would not appear in Homebridge.
+- **useExternalVideoStreams** - Stream camera feeds from Vivint servers instead of streaming directly from the Panel.

@@ -1,51 +1,54 @@
 {
-  "name": "@balansse/homebridge-vivint",
-  "version": "1.5.4",
-  "description": "Control Vivint with HomeBridge",
+  "name": "@koleok/vivint-mqtt",
+  "version": "0.0.1",
+  "description": "Control and Monitor Vivint with MQTT",
   "license": "ISC",
-  "author": "Alexandr Balan <balansse@gmail.com>",
+  "author": "Koleok <balansse@gmail.com>",
   "contributors": [
-    "Tim Harper <timcharper@gmail.com>"
+    "Tim Harper <timcharper@gmail.com>",
+    "Koleok <kchamb3@gmail.com>"
   ],
   "keywords": [
-    "homebridge-plugin"
+    "vivint",
+    "mqtt",
+    "iot",
+    "smarthome",
+    "openhab",
+    "home-assistant"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/balansse/homebridge-vivint.git"
+    "url": "git://github.com/koleok/vivint-mqtt.git"
   },
   "bugs": {
-    "url": "http://github.com/balansse/homebridge-vivint/issues"
+    "url": "http://github.com/koleok/vivint-mqtt/issues"
   },
   "engines": {
-    "node": ">=10",
-    "homebridge": ">=1.0.0"
+    "node": ">=10"
   },
   "dependencies": {
+    "async-mqtt": "^2.6.1",
     "debounce-promise": "^3.1.2",
     "ffmpeg-for-homebridge": "^0.0.9",
     "get-port": "^5.1.1",
     "isobject": "^3.0.1",
     "jpeg-extract": "^3.0.1",
     "pubnub": "^4.29.11",
+    "ramda": "^0.27.1",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "@types/node": "^15.12.4",
+    "@types/ramda": "^0.27.40",
+    "mocha": "^5.2.0",
+    "prettier": "^2.3.1",
+    "ts-node": "^10.0.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.4"
   },
-  "homepage": "https://github.com/balansse/homebridge-vivint#readme",
-  "funding": [
-    {
-      "type": "kofi",
-      "url": "https://ko-fi.com/balansse"
-    },
-    {
-      "type": "paypal",
-      "url": "https://paypal.me/balansse"
-    }
-  ],
-  "main": "index.js",
+  "homepage": "https://github.com/koleok/vivint-mqtt#readme",
+  "main": "index.ts",
   "directories": {
     "lib": "lib",
     "test": "test"

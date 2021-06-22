@@ -29,6 +29,9 @@ export interface Device {
   Id: number
   ActualType: string
   Status: boolean
+  CameraThumbnailDate?: string
+  DeterUserInfo?: string
+  DeterTimestamp?: number
 }
 
 export interface PlatformContext {

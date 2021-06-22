@@ -1,3 +1,9 @@
+export interface Mapping {
+  vivintId: number
+  topic: string
+  type: string
+}
+
 export interface Config {
   username: string
   password: string
@@ -6,4 +12,36 @@ export interface Config {
   mqttUrl: string
   apiLoginRefreshSecs?: number
   ignoreDeviceTypes?: string[]
+  mappings: { [key: string]: Mapping }
+}
+
+export interface PubNubMessage {
+  Id: string
+  Data: Data
+}
+
+export interface Data {
+  Devices: Device[]
+  PlatformContext: PlatformContext
+}
+
+export interface Device {
+  Id: number
+  ActualType: string
+  Status: boolean
+}
+
+export interface PlatformContext {
+  MessagePayload_ContextCarrier: MessagePayloadContextCarrier
+  MessageId: string
+  Timestamp: Date
+}
+
+export interface MessagePayloadContextCarrier {
+  previous_handler: string
+  tracing_context: TracingContext
+}
+
+export interface TracingContext {
+  'uber-trace-id': string
 }

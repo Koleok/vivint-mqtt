@@ -1,3 +1,16 @@
+export enum SecurityState {
+  DISARMED = 0,
+  ARMING_AWAY_IN_EXIT_DELAY = 1,
+  ARMING_STAY_IN_EXIT_DELAY = 2,
+  ARMED_STAY = 3,
+  ARMED_AWAY = 4,
+  ARMED_STAY_IN_ENTRY_DELAY = 5,
+  ARMED_AWAY_IN_ENTRY_DELAY = 6,
+  ALARM = 7,
+  ALARM_FIRE = 8,
+  DISABLED = 11,
+  WALK_TEST = 12,
+}
 export interface Mapping {
   vivintId: number
   topic: string

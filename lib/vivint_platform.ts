@@ -1,6 +1,15 @@
 import type { Client } from 'mqtt'
 import VivintApiModule from './vivint_api'
+import { SecurityState } from './types'
 import type { Config, PubNubMessage } from './types'
+
+const isSecurityState = (msg) =>
+  msg.Data.PlatformContext?.validation?.MessagePayload_Args
+    ?.MessagePayload_Name?.[0] === 'security_state'
+
+const getSecurityState = (msg): SecurityState =>
+  msg.Data.PlatformContext.validation.MessagePayload_Args
+    .MessagePayload_Value[0]
 
 export default class VivintPlatform {
   api: any
@@ -38,6 +47,13 @@ export default class VivintPlatform {
             },
             message: function ({ message }) {
               const parsed = vivintApi.parsePubNub(message) as PubNubMessage
+
+              if (isSecurityState(parsed)) {
+                mqttClient.publish(
+                  'stat/vivint/panel/STATUS',
+                  SecurityState[getSecurityState(parsed)]
+                )
+              }
 
               parsed.Data?.Devices?.forEach((device) => {
                 const mapping = config.mappings[device.Id]

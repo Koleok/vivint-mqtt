@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 Restart=on-failure
 WorkingDirectory=/home/openhabian/vivint-mqtt
-ExecStart=/home/openhabian/node_modules/.bin/ts-node /home/openhabian/vivint-mqtt/index.ts
+ExecStart=/home/openhabian/vivint-mqtt/node_modules/.bin/ts-node /home/openhabian/vivint-mqtt/index.ts
 
 [Install]
 WantedBy=multi-user.target

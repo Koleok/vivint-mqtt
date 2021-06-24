@@ -1,0 +1,13 @@
+# copy this file to /lib/systemd/system/
+
+[Unit]
+Description=Vivint Mqtt bridge
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/home/openhabian/vivint-mqtt
+ExecStart=/home/openhabian/node_modules/.bin/ts-node /home/openhabian/vivint-mqtt/index.ts
+
+[Install]
+WantedBy=multi-user.target

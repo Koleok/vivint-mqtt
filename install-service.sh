@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ln -s /home/openhabian/vivint-mqtt/vivint-mqtt.service /lib/systemd/system/vivint-mqtt.service
+cp /home/openhabian/vivint-mqtt/vivint-mqtt.service /lib/systemd/system
